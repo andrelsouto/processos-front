@@ -1,0 +1,10 @@
+<form [formGroup]="uploadForm" (submit)="sendArchive($event)">
+  <app-message-response [message]="message.message" [css]="class"></app-message-response>
+  <div class="form-group">
+    <label class="d-block">Selecione um arquivo .csv clicando no botao abaixo</label>
+    <button type="button" (click)="inputFile.click()" class="d-inline p-2 btn btn-lg btn-primary mdi mdi-cloud-upload"> {{ file ? file.name  : 'SELECIONAR ARQUIVO' }}</button>
+    <label *ngIf="file" class="d-inline p-2"><i class="mdi mdi-file-excel"></i> {{ file.name }}</label>
+    <input formControlName="file" accept=".csv" hidden type="file" (change)="upload($event.target.files[0])" #inputFile>
+  </div>
+  <button type="submit" class="d-block p-2 btn btn-success" [disabled]="!uploadForm.valid">Enviar</button>
+</form>

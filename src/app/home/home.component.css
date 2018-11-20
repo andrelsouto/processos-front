@@ -1,0 +1,41 @@
+@media screen and (min-width: 1300px){
+    .menu {
+    
+        height: calc(100vh - 56px);
+        top: 56px;
+        left: 0;
+        width: 300px;
+    }
+    
+    .app {
+        
+        position: absolute;
+        left: 300px;
+        top: 56px;
+        width: calc(100vw - 320px);
+    }
+
+    .mdi.mdi-menu {
+
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1299px){
+    .menu {
+        
+        min-height: calc(100vh - 60px);
+        top: 56px;
+        margin: 0 auto;
+    }
+    
+    .app {
+
+        top: 56px;
+    }
+
+    .invisible {
+
+        display: none;
+    }
+}

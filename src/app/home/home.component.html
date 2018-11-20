@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-dark text-white fixed-top">
+  <a class="navbar-brand mb-0 h1 lead"><img class="d-inlie-blick align-top" [src]="'assets/img/logo.png'" width="30" height="30">
+    Aplicação Processo
+  </a>
+  <span (click)="isOpen = isOpen ? false : true" class="mdi mdi-menu"></span>
+    <img [src]="url" class="rounded-circle" width="35" height="35">
+</nav>
+<app-load></app-load>
+<div class="container-fluid">
+  <div class="row">
+      <div [@openClose]="isOpen" (@openClose.start)="animationStart()" (@openClose.done)="animationDone()" [class.invisible]="invisible && !desk" class="position-fixed shadow p-3 col menu">
+          <app-menu (click)="showContent()"></app-menu>
+    </div>
+    <div [class.invisible]="!invisible && !desk" class="col-sm-12 col-md-10 col-lg-10 col-xl-10 app">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

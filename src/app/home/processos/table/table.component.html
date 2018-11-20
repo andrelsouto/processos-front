@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Numero</th>
+          <th class="only-desk" scope="col">Nome</th>
+          <th scope="col">Sentenciado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of processos | paginate: { itemsPerPage: 15, currentPage: page }" [class.table-success]="p.setenciado">
+          <td>{{ p.numero }}</td>
+          <td class="only-desk">{{ p.nome }}</td>
+          <td>
+            <a (click)="sentenciar(p)" *ngIf="p.setenciado" class="text-success mdi mdi-checkbox-marked-circle-outline">
+                <span class="text-dark"> Sentenciado</span>
+            </a>
+            <a (click)="sentenciar(p)" *ngIf="!p.setenciado" class="text-warning mdi mdi-checkbox-blank-circle-outline">
+              <span class="text-dark"> Sentenciar</span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <pagination-controls 
+          (pageChange)="page = $event" 
+          responsive="true"
+          previousLabel="Anterior"
+          nextLabel="Próximo">
+        </pagination-controls>
+      </tfoot>
+    </table>
+</div>
