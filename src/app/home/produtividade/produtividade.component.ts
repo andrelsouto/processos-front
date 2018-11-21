@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+
+import { ProdutividadeService } from './produtividade.service';
 
 @Component({
   selector: 'app-produtividade',
@@ -7,20 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutividadeComponent implements OnInit {
 
-  data = [
-    ['sentenciados', 14],
-    ['nao sentenciados', 45]
-  ];
+  resize: boolean = false;
+
+  data: any;
   options = {
     title: 'Produtividade',
     pieSliceTextStyle: { color: 'black' },
-    slices: { 0: { color: '#98FB98', 1: { color: '#FF7F50' } } }
-  }
-  resize: boolean = true;
+    slices: { 0: { color: '#98FB98' }, 1: { color: '#B8860B' } }
+  };
 
-  constructor() { }
+  constructor(private produtividadeService: ProdutividadeService) { }
+
+  @HostListener('window:resize')
+  onresize(){
+    
+    this.resize = window.innerWidth == 1299;
+  }
 
   ngOnInit() {
+
+    this.produtividadeService.getDataChart().subscribe(j => {
+      
+      this.data = [
+        ['SENTENCIADOS', j.sents],
+        ['NÃO SENTENCIADOS', j.nSents]
+      ];
+    } );
   }
 
 }

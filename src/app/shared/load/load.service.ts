@@ -19,13 +19,11 @@ export class LoadService {
 
   start(){
 
-    console.log('startado');
     this.loadSubject.next(LoadType.START);
   }
 
   stop(){
 
-    console.log('parado');
     this.loadSubject.next(LoadType.STOPED);
   }
 }
