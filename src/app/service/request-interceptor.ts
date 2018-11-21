@@ -16,7 +16,7 @@ export class RequestInterceptor implements HttpInterceptor {
             if (event instanceof HttpRequest){
                 this.loadService.start();
             } else {
-                console.log('start loader');
+                this.loadService.stop();
             }
         }));
     }
