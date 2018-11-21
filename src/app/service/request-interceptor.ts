@@ -14,11 +14,9 @@ export class RequestInterceptor implements HttpInterceptor {
         
         return next.handle(req).pipe(tap(event => {
             if (event instanceof HttpRequest){
-                console.log('asas')
                 this.loadService.start();
             } else {
                 console.log('start loader');
-                this.loadService.stop();
             }
         }));
     }

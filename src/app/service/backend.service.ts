@@ -25,15 +25,12 @@ export class BackendService {
 
   request(method: string, url: string, params?): Observable<any>{
 
-    let headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Origin', 'application/json');
-
     if(method.toUpperCase() === 'POST'){
 
-      return this.http.post(`${host}${url}`, params, { responseType: 'text', headers: headers });
+      return this.http.post(`${host}${url}`, params, { responseType: 'text' });
     }else if (method.toUpperCase() === 'GET'){
 
-      return this.http.get(`${host}${url}`, { params: params, headers: headers });
+      return this.http.get(`${host}${url}`, { params: params });
     }
   }
 
