@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.uploadForm = this.fb.group({
       file: ['', Validators.required]
     });
-    this.download();
+    // this.download();
   }
 
   upload(event, data){
