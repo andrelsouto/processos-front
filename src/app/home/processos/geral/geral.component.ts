@@ -23,8 +23,7 @@ export class GeralComponent implements OnInit {
 
     this.processoService.getProcessos().subscribe(p => {
       this.processos = p;
-      console.log(p);
-    }, e => console.log('erro', e));
+    });
   }
 
   sentenciar(processo: Processo){

@@ -19,6 +19,7 @@ export class LoadComponent implements OnInit {
   ngOnInit() {
 
     this.progress$ = this.loadService.getProgress().pipe(map(loadType=>loadType.valueOf()));
+    console.log('aqui');
   }
 
 }

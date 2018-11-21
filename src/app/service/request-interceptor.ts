@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { LoadService } from '../shared/load/load.service';
@@ -13,10 +13,11 @@ export class RequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
         return next.handle(req).pipe(tap(event => {
-            if (event instanceof HttpResponse){
+            if (event instanceof HttpRequest){
+                console.log('asas')
                 this.loadService.start();
-            } else if (event instanceof HttpResponse){
-                console.log('aqui');
+            } else {
+                console.log('start loader');
                 this.loadService.stop();
             }
         }));

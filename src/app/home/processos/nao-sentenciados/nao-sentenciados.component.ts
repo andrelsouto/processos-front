@@ -22,8 +22,7 @@ export class NaoSentenciadosComponent implements OnInit {
 
     this.processoService.getNaoSentenciados().subscribe(p => {
       this.processos = p;
-      console.log(p);
-    }, e => console.log('erro', e));
+    });
   }
 
   sentenciar(processo: Processo){

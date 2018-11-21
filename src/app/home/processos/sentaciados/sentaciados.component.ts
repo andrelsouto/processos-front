@@ -23,8 +23,7 @@ export class SentaciadosComponent implements OnInit {
 
     this.processoService.getSentenciados().subscribe(p => {
       this.processos = p;
-      console.log(p);
-    }, e => console.log('erro', e));
+    });
   }
 
   sentenciar(processo: Processo){

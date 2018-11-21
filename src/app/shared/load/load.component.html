@@ -1,3 +1,3 @@
 <div class="progress" style="height: 3px;">
-  <div [ngClass]="progress$ | async" class="progress-bar" role="progressbar"></div>
+  <div class="progress-bar {{ progress$ | async }}" role="progressbar"></div>
 </div>
