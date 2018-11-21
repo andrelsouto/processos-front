@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const configUrl = 'assets/config.json';
-const host = 'http://192.168.15.15:8082/processos/';
+const host = 'https://glacial-brushlands-71010.herokuapp.com//';
 
 @Injectable({
   providedIn: 'root'
