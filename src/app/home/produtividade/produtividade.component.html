@@ -1,13 +1,13 @@
-<figure *ngIf="dataChart" class="figure center-align">
+<figure *ngIf="data" class="figure center-align">
   <google-chart 
     [dynamicResize]="resize"
     [width]="'900'"
-    [height]="'1300px'" 
+    [height]="'500'" 
     [title]="'Produtividade'" 
     [type]="'PieChart'" 
     [data]="data" 
     [options]="options"></google-chart>
-  <figcaption class="figure-caption">A caption for the above image.</figcaption>
+  <figcaption class="figure-caption">Representação de processos sentenciados e à sentenciar.</figcaption>
 </figure>
 
 <!-- <p>DESENVOLVIMENTO</p> -->
