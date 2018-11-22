@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit {
     this.uploadForm = this.fb.group({
       file: ['', Validators.required]
     });
+    this.invisible = window.innerWidth < 1299;
+    this.desk = window.innerWidth > 1299
     // this.download();
   }
 

@@ -10,6 +10,8 @@ import { ProdutividadeService } from './produtividade.service';
 export class ProdutividadeComponent implements OnInit {
 
   resize: boolean = false;
+  widht: number = 450;
+  heigth: number = 300;
 
   data: any;
   options = {
@@ -23,7 +25,13 @@ export class ProdutividadeComponent implements OnInit {
   @HostListener('window:resize')
   onresize(){
     
-    this.resize = window.innerWidth == 1299;
+    if(this.resize = window.innerWidth <= 1299) {
+
+      console.log("aaqui");
+      this.widht = 450;
+      this.heigth = 300;
+    }
+    
   }
 
   ngOnInit() {
@@ -34,6 +42,13 @@ export class ProdutividadeComponent implements OnInit {
         ['SENTENCIADOS', j.sents],
         ['NÃO SENTENCIADOS', j.nSents]
       ];
+
+      if(this.resize = window.innerWidth < 1299) {
+
+        console.log('aqui');
+        this.widht = 350;
+        this.heigth = 300;
+      }
     } );
   }
 
