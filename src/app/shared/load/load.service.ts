@@ -23,7 +23,7 @@ export class LoadService {
   }
 
   stop(){
-
+    
     this.loadSubject.next(LoadType.STOPED);
   }
 }

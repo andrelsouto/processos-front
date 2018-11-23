@@ -15,6 +15,13 @@
         width: calc(100vw - 320px);
     }
 
+    .loader {
+
+        position: absolute;
+        top: 56px;
+        width: 100vw;
+    }
+
     .mdi.mdi-menu {
 
         display: none;
@@ -27,6 +34,13 @@
         min-height: calc(100vh - 60px);
         top: 56px;
         margin: 0 auto;
+    }
+
+    .loader {
+
+        position: absolute;
+        top: 56px;
+        width: 100vw;
     }
     
     .app {

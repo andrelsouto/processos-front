@@ -12,12 +12,14 @@ export class ProdutividadeComponent implements OnInit {
   resize: boolean = false;
   widht: number = 450;
   heigth: number = 300;
+  showChart: boolean = false;
 
   data = [];
   options = {
     chart: { title: 'Produtividade' },
     bar: 'horizontal',
-    animation: { 
+    animation: {
+      duration: 2000,
       easing: 'out',
       startup: true
     },
@@ -26,6 +28,11 @@ export class ProdutividadeComponent implements OnInit {
       alignment: 'start'
     }
   };
+
+  onReady(){
+    console.log('aqui');
+    this.showChart = true;
+  }
 
   constructor(private produtividadeService: ProdutividadeService) { }
 

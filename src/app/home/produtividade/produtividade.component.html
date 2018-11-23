@@ -1,4 +1,4 @@
-<figure *ngIf="data.length > 0" class="figure center-align">
+<figure *ngIf="data.length > 0; else Load" class="figure center-align">
   <google-chart 
     [columnNames]="['ano', 'Sentenciados', 'Não Sentenciados']"
     [dynamicResize]="resize"
@@ -6,9 +6,9 @@
     [height]="heigth" 
     [title]="'Produtividade'" 
     [type]="'BarChart'" 
-    [data]="data" 
+    [data]="data"
+    (ready)="onReady()"
     [options]="options"></google-chart>
-  <figcaption class="figure-caption">Representação de processos sentenciados e à sentenciar.</figcaption>
+  <figcaption *ngIf="showChart" class="figure-caption">Representação de processos sentenciados e à sentenciar.</figcaption>
 </figure>
-
-<!-- <p>DESENVOLVIMENTO</p> -->
+  <span *ngIf="!showChart" class="mdi mdi-chart-donut mdi-spin align-middle mdi-48px load"></span>

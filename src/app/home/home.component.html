@@ -5,7 +5,9 @@
   <span (click)="isOpen = isOpen ? false : true" class="mdi mdi-menu"></span>
     <!-- <img [src]="url" class="rounded-circle" width="35" height="35"> -->
 </nav>
-<app-load></app-load>
+<div class="loader">
+  <app-load></app-load>
+</div>
 <div class="container-fluid">
   <div class="row">
       <div [@openClose]="isOpen" (@openClose.start)="animationStart()" (@openClose.done)="animationDone()" [class.invisible]="invisible && !desk" class="position-fixed shadow p-3 col menu">

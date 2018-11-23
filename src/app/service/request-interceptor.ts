@@ -13,10 +13,10 @@ export class RequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
         return next.handle(req).pipe(tap(event => {
-            if (event instanceof HttpRequest){
-                this.loadService.start();
-            } else {
+            if (event instanceof HttpResponse){
                 this.loadService.stop();
+            } else {
+                this.loadService.start();
             }
         }));
     }
