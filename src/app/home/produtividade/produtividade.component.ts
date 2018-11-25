@@ -23,14 +23,11 @@ export class ProdutividadeComponent implements OnInit {
       easing: 'out',
       startup: true
     },
-    legend: {
-      position: 'bottom',
-      alignment: 'start'
-    }
+    legend: 'none'
   };
 
   onReady(){
-    console.log('aqui');
+
     this.showChart = true;
   }
 
@@ -41,10 +38,11 @@ export class ProdutividadeComponent implements OnInit {
     
     if(this.resize = window.innerWidth <= 1299) {
 
-      this.widht = 450;
+      this.widht = window.innerWidth - 50;
       this.heigth = 300;
     } else {
-      this.widht = 850;
+
+      this.widht = window.innerWidth - 450;
       this.heigth = 500;
     }
 
