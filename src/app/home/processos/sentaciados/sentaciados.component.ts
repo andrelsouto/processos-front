@@ -8,7 +8,8 @@ import { MessageResponseComponent } from 'src/app/shared/message-response/messag
 @Component({
   selector: 'app-sentaciados',
   templateUrl: './sentaciados.component.html',
-  styleUrls: ['./sentaciados.component.css']
+  styleUrls: ['./sentaciados.component.css'],
+  providers: [ProcessoService]
 })
 export class SentaciadosComponent implements OnInit {
 

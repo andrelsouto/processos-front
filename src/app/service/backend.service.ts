@@ -16,7 +16,7 @@ export class BackendService {
 
   getConfig(){
 
-    return this.http.get<any>(configUrl);
+    return this.http.get<{ backendHost: String, textfile: string }>(configUrl);
   }
 
   getHost(): string {

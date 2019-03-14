@@ -8,7 +8,8 @@ import { MessageResponseComponent } from 'src/app/shared/message-response/messag
 @Component({
   selector: 'app-geral',
   templateUrl: './geral.component.html',
-  styleUrls: ['./geral.component.css']
+  styleUrls: ['./geral.component.css'],
+  providers: [ProcessoService]
 })
 export class GeralComponent implements OnInit {
 

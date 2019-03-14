@@ -7,7 +7,8 @@ import { ProcessoService } from '../processo.service';
 @Component({
   selector: 'app-nao-sentenciados',
   templateUrl: './nao-sentenciados.component.html',
-  styleUrls: ['./nao-sentenciados.component.css']
+  styleUrls: ['./nao-sentenciados.component.css'],
+  providers: [ProcessoService]
 })
 export class NaoSentenciadosComponent implements OnInit {
 
