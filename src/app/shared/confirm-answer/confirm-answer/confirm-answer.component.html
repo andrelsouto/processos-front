@@ -1,0 +1,18 @@
+<div *ngIf="show" id="confirmModal" class="modal fade" [class.show]="show" aria-labelledby="confirmModalLabel"
+  tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Confirmar</h5>
+      </div>
+      <div class="modal-body">
+        <p>Deseja realmente excluir este processo?</p>
+        <strong>{{ processo?.numero }}</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="show=false" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="delete()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

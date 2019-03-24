@@ -1,0 +1,29 @@
+<app-load></app-load>
+<div class="card mx-auto w-50 shadow-lg">
+  <h5 class="card-header text-center">Login <span class="mdi mdi-lock"></span></h5>
+  <div class="card-body">
+    <form [formGroup]="loginForm" (submit)="logon($event, loginForm.value)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" (keypress)="message='';" class="form-control" id="email" formControlName="username"
+          placeholder="Entre com email">
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" (keypress)="message='';" class="form-control" id="password" formControlName="password"
+          placeholder="Senha">
+      </div>
+      <p>Esqueceu a senha? Clique <a (click)="displayInfo()">aqui</a>.</p>
+      <div *ngIf="toggle" class="alert alert-info">
+        {{ messageInfo }}
+        <button type="button" (click)="displayInfo()" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="message" class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>

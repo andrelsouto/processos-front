@@ -1,0 +1,18 @@
+.card{
+    
+    position: relative;
+    top: calc(50vh - 203px);
+}
+
+p a {
+
+    cursor: pointer;
+    color: #007bff;
+}
+
+p a:hover {
+
+    cursor: pointer;
+    color: #007bff;
+    text-decoration-line: underline;
+}
