@@ -10,6 +10,6 @@ export class ProdutividadeService {
 
   getDataChart(){
 
-    return this.baendService.request('get', 'processo/chartData');
+    return this.baendService.protectedRequest('get', 'processo/chartData');
   }
 }
