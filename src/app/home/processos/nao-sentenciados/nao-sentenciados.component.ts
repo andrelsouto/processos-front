@@ -22,7 +22,7 @@ export class NaoSentenciadosComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getNaoSentenciados().subscribe(p => {
-      this.processos = p;
+      this.processos = JSON.parse(p);
     });
   }
 

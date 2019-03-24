@@ -7,9 +7,14 @@ import { UploadComponent } from './home/upload/upload.component';
 import { GeralComponent } from './home/processos/geral/geral.component';
 import { SentaciadosComponent } from './home/processos/sentaciados/sentaciados.component';
 import { ProdutividadeComponent } from './home/produtividade/produtividade.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, children: [
+  
+  { path: 'login', component: LoginComponent },
+
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] , children: [
     { path: 'upload', component: UploadComponent },
     { path: 'processos/geral', component: GeralComponent },
     { path: 'processos/sentenciados', component: SentaciadosComponent },

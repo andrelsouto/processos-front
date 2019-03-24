@@ -7,6 +7,7 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { RequestInterceptor } from './service/request-interceptor';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RequestInterceptor } from './service/request-interceptor';
     AppRoutingModule,
     HttpClientModule,
     HomeModule,
-    SharedModule
+    SharedModule,
+    LoginModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }

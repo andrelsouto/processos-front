@@ -4,6 +4,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { LoadComponent } from './load/load.component';
 import { MessageResponseComponent } from './message-response/message-response.component';
+import { ConfirmAnswerComponent } from './confirm-answer/confirm-answer/confirm-answer.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { MessageResponseComponent } from './message-response/message-response.co
   declarations: [
     MenuComponent, 
     LoadComponent, 
-    MessageResponseComponent
+    MessageResponseComponent, 
+    ConfirmAnswerComponent
   ],
   exports: [
     MenuComponent,
     LoadComponent,
-    MessageResponseComponent
+    MessageResponseComponent,
+    ConfirmAnswerComponent
   ]
 })
 export class SharedModule { }

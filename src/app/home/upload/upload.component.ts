@@ -12,7 +12,7 @@ import { MessageResponseComponent } from 'src/app/shared/message-response/messag
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  
+
   file: File;
   uploadForm: FormGroup;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
@@ -28,25 +28,26 @@ export class UploadComponent implements OnInit {
     });
   }
 
-  upload(file: File){
+  upload(file: File) {
 
     this.file = file;
   }
 
-  sendArchive(event){
+  sendArchive(event) {
 
     event.preventDefault();
     this.uploadService.uploadCSV(this.file).subscribe(
       h => {
         console.log(h);
-          this.message.message = h;
-          this.class = 'success';
-      }, 
-      () => {
+        this.message.message = h;
+        this.class = 'success';
+      },
+      error => {
         this.message.message = 'Erro ao fazer upload dos arquivos';
         this.class = 'danger';
+        console.log(error.status);
       }
-      );
+    );
   }
 
 }

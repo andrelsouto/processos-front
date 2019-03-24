@@ -11,7 +11,7 @@ export class UploadService {
   uploadCSV(file: File){
 
     let dataForm = new FormData();
-    dataForm.append('file', file)
-    return this.backendService.request('post', 'processo/uploadFile', dataForm);
+    dataForm.append('file', file);
+    return this.backendService.protectedRequest('post', 'processo/uploadFile', dataForm);
   }
 }

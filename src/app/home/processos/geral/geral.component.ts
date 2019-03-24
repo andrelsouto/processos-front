@@ -23,7 +23,7 @@ export class GeralComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getProcessos().subscribe(p => {
-      this.processos = p;
+      this.processos = JSON.parse(p);
     });
   }
 

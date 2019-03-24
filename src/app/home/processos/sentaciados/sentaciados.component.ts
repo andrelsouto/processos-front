@@ -23,7 +23,7 @@ export class SentaciadosComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getSentenciados().subscribe(p => {
-      this.processos = p;
+      this.processos = JSON.parse(p);
     });
   }
 

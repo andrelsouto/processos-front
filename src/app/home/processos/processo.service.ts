@@ -11,22 +11,27 @@ export class ProcessoService {
 
   getProcessos(){
 
-    return this.backendService.request('get', 'processo/getAll');
+    return this.backendService.protectedRequest('get', 'processo/getAll');
   }
 
   getSentenciados(){
 
-    return this.backendService.request('get', 'processo/sentenciados');
+    return this.backendService.protectedRequest('get', 'processo/sentenciados');
   }
 
   getNaoSentenciados(){
 
-    return this.backendService.request('get', 'processo/naoSentenciados');
+    return this.backendService.protectedRequest('get', 'processo/naoSentenciados');
   }
     
 
   sentenciarProcesso(numero: string){
 
-    return this.backendService.request('post', 'processo/' + numero);
+    return this.backendService.protectedRequest('post', 'processo/' + numero);
+  }
+
+  deleteProcesso(id: string){
+
+    return this.backendService.protectedRequest('post', 'processo/delete/' + id);
   }
 }

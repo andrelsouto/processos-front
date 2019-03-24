@@ -1,3 +1,5 @@
+<app-confirm-answer (confirma)="confirmacao($event)"></app-confirm-answer>
+<app-message-response></app-message-response>
 <div class="table-responsive">
   <table class="table table-hover">
       <thead>
@@ -5,6 +7,7 @@
           <th scope="col">Numero</th>
           <th class="only-desk" scope="col">Nome</th>
           <th scope="col">Sentenciado</th>
+          <th scope="col">Ação</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +21,9 @@
             <a (click)="sentenciar(p)" *ngIf="!p.setenciado" class="text-warning mdi mdi-checkbox-blank-circle-outline">
               <span class="text-dark"> Sentenciar</span>
             </a>
+          </td>
+          <td>
+            <button (click)="delete(p)" class="btn btn-link text-danger mdi mdi-delete-outline" data-toggle="tooltip" data-placement="top" title="Excluir"></button>
           </td>
         </tr>
       </tbody>
