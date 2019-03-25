@@ -30,7 +30,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
             if (error instanceof HttpErrorResponse) {
 
-                if ( error.status === 500 && error.error.includes('JWT expired at')) {
+                if ( error.status === 500 ) {
 
                     this.userService.logoffUser();
                     this.router.navigate(['/login']);
