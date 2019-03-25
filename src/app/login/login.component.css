@@ -1,18 +1,30 @@
-.card{
+@media only screen and (min-width: 768px){
+
+    .card{
+        
+        position: relative;
+        top: calc(50vh - 203px);
+    }
     
-    position: relative;
-    top: calc(50vh - 203px);
+    p a {
+    
+        cursor: pointer;
+        color: #007bff;
+    }
+    
+    p a:hover {
+    
+        cursor: pointer;
+        color: #007bff;
+        text-decoration-line: underline;
+    }
 }
 
-p a {
+@media only screen and (max-width: 767px){
 
-    cursor: pointer;
-    color: #007bff;
-}
+    .card {
 
-p a:hover {
-
-    cursor: pointer;
-    color: #007bff;
-    text-decoration-line: underline;
+        width: 100vw !important;
+        height: 100vh !important;
+    }
 }
