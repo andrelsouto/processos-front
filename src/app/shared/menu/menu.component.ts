@@ -23,9 +23,4 @@ export class MenuComponent implements OnInit {
     ]
   }
 
-  deac(){
-
-    this.menus.forEach(m => m.active = false);
-  }
-
 }

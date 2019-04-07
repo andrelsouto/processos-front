@@ -1,7 +1,6 @@
 <h6 class="display-4">Menu</h6>
 <ul class="nav flex-column">
     <li class="nav-item" *ngFor="let m of menus; first as isFirst">
-      <a (click)="deac(); m.active = (m.active == true ? false : true)" [routerLink]="m.rota" 
-        class="nav-link text-dark" [class.font-weight-bold]="m.active" href="#">{{ m.descricao }}</a>
+      <a  [routerLink]="m.rota" class="nav-link text-dark" routerLinkActive="font-weight-bold" href="#">{{ m.descricao }}</a>
     </li>
   </ul>

@@ -19,7 +19,8 @@ const routes: Routes = [
     { path: 'processos/geral', component: GeralComponent },
     { path: 'processos/sentenciados', component: SentaciadosComponent },
     { path: 'processos/nao/sentenciados', component: NaoSentenciadosComponent },
-    { path: 'produtividade', component: ProdutividadeComponent }
+    { path: 'produtividade', component: ProdutividadeComponent },
+    { path: '**', redirectTo: '/' }
   ]
   }
 ];
