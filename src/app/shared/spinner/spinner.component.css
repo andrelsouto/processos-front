@@ -22,14 +22,14 @@
 
 .lds-spinner {
   position: relative;
-  z-index: 3;
+  z-index: 3 !important;
 }
 
 .back {
 
   background-color: rgb(158, 158, 158);
   opacity: 0.6;
-  z-index: 2;
+  z-index: 2 !important;
   position: fixed;
   top: 0;
   left: 0;

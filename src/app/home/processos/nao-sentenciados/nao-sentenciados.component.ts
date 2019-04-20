@@ -16,7 +16,7 @@ export class NaoSentenciadosComponent implements OnInit {
   filter: string = '';
   @ViewChild(TableComponent) tableProcessos: TableComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
-  
+
   constructor(private processoService: ProcessoService) { }
 
   ngOnInit() {
@@ -26,20 +26,19 @@ export class NaoSentenciadosComponent implements OnInit {
     });
   }
 
-  sentenciar(processo: Processo){
-    
-    this.processoService.sentenciarProcesso(processo.numero).subscribe((res)=>{
+  sentenciar(processo: Processo) {
+
+    this.processoService.sentenciarProcesso(processo.numero).subscribe((res) => {
       res = JSON.parse(res) as Processo;
-      let index: number = this.tableProcessos.processos.findIndex(p => p.numero == res.numero);
+      const index: number = this.tableProcessos.processos.findIndex(p => p.numero === res.numero);
       this.tableProcessos.processos.splice(index, 1);
       this.message.message = 'Processo sentenciado com sucesso.';
       this.message.css = 'success';
     },
-    ()=>{
+    () => {
       this.message.message = 'Erro ao sentenciar processo.';
       this.message.css = 'danger';
-    }
-    );
+    });
   }
 
 }
