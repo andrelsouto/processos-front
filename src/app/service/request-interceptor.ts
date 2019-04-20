@@ -11,7 +11,7 @@ import { SpinnerService } from '../shared/spinner/spinner.service';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
-    
+
     constructor(
         private loadService: LoadService,
         private userService: UserService,
@@ -23,9 +23,9 @@ export class RequestInterceptor implements HttpInterceptor {
 
         return next.handle(req).pipe(tap(event => {
 
-            if (event instanceof HttpResponse){
+            if (event instanceof HttpResponse || event instanceof HttpErrorResponse) {
 
-                if (!this.userService.isLogged() && event.headers.has('Authorization')){
+                if (!this.userService.isLogged() && event.headers.has('Authorization')) {
                     this.auth.setToken(event.headers.get('Authorization'));
                 }
                 this.loadService.stop();
