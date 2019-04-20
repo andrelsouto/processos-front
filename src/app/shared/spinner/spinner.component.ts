@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class SpinnerComponent implements OnInit {
 
-  private spinner$: Observable<string>;
+  spinner$: Observable<string>;
 
   constructor(private spinnerService: SpinnerService) { }
 
