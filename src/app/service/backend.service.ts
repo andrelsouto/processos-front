@@ -5,7 +5,7 @@ import { JwtService } from './jwt.service';
 
 const configUrl = 'assets/config.json';
 const host = 'https://glacial-brushlands-71010.herokuapp.com/';
-// const host = 'http://localhost:8080/'
+// const host = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'

@@ -1,12 +1,12 @@
-<app-confirm-answer (confirma)="confirmacao($event)"></app-confirm-answer>
 <app-message-response></app-message-response>
+<app-spinner></app-spinner>
 <div class="table-responsive">
   <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">Numero</th>
           <th class="only-desk" scope="col">Nome</th>
-          <th scope="col">Sentenciado</th>
+          <th scope="col">Status</th>
           <th scope="col">Ação</th>
         </tr>
       </thead>
@@ -19,11 +19,12 @@
                 <span class="text-dark"> Sentenciado</span>
             </a>
             <a (click)="sentenciar(p)" *ngIf="!p.setenciado" class="text-warning mdi mdi-checkbox-blank-circle-outline">
-              <span class="text-dark"> Sentenciar</span>
+              <span class="text-dark"> A Sentenciar</span>
             </a>
           </td>
           <td>
-            <button (click)="delete(p)" class="btn btn-link text-danger mdi mdi-delete-outline" data-toggle="tooltip" data-placement="top" title="Excluir"></button>
+            <button [swal]="deleteSwal" (processo)="processoSelecionado = $event" [appProcesso]="p" 
+              (confirm)="confirmacao(p)" class="btn btn-link text-danger mdi mdi-delete-outline" data-toggle="tooltip" data-placement="top" title="Excluir"></button>
           </td>
         </tr>
       </tbody>
@@ -37,3 +38,10 @@
       </tfoot>
     </table>
 </div>
+<swal #deleteSwal
+  title="Alerta!"
+  text="Deseja deletar o processo de número: {{ processoSelecionado?.numero }}"
+  type="warning"
+  showCancelButton="true"
+  focusCancel="true">
+</swal>

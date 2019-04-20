@@ -28,12 +28,13 @@ export class GeralComponent implements OnInit {
   }
 
   sentenciar(processo: Processo){
-    
+
     this.processoService.sentenciarProcesso(processo.numero).subscribe((res)=>{
       res = JSON.parse(res) as Processo;
       let index: number = this.tableProcessos.processos.findIndex(p => p.numero == res.numero);
       this.tableProcessos.processos[index] = res;
-      processo.setenciado ? this.message.message = 'Processo não mais sentenciado.' : this.message.message = 'Processo sentenciado com sucesso!';
+      processo.setenciado ? this.message.message = 'Processo não mais sentenciado.'
+        : this.message.message = 'Processo sentenciado com sucesso!';
       processo.setenciado ? this.message.css = 'warning' : this.message.css = 'success';
     },
     () => {

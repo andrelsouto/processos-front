@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewChild, ContentChild } from '@angular/core';
 
 import { Processo } from 'src/app/models/processo';
 import { ConfirmAnswerComponent } from 'src/app/shared/confirm-answer/confirm-answer/confirm-answer.component';
 import { ProcessoService } from '../processo.service';
 import { MessageResponseComponent } from 'src/app/shared/message-response/message-response.component';
 import { finalize } from 'rxjs/operators';
+import { ProcessoDirective } from 'src/app/shared/directives/processo.directive';
 
 @Component({
   selector: 'app-table',
@@ -16,7 +17,9 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() processos: Processo[];
   @Output() sentenciado = new EventEmitter<Processo>();
   @ViewChild(ConfirmAnswerComponent) answer: ConfirmAnswerComponent;
-  @ViewChild(MessageResponseComponent) message: MessageResponseComponent
+  @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
+  @ContentChild(ProcessoDirective) proc!: ProcessoDirective;
+  processoSelecionado: Processo;
   page: number = 1;
 
   constructor(private processoService: ProcessoService) { }
@@ -24,12 +27,6 @@ export class TableComponent implements OnInit, OnChanges {
   sentenciar(p){
 
     this.sentenciado.emit(p);
-  }
-
-  delete(processo: Processo){
-
-    this.answer.processo = processo;
-    this.answer.show = true;
   }
 
   ngOnInit() {
@@ -54,9 +51,9 @@ export class TableComponent implements OnInit, OnChanges {
       }
     )
   }
-  
+
   ngOnChanges(): void {
-    
+
     this.processos && 
       this.processos.sort((a, b) => a.numero > b.numero ? 1 : -1);
   }

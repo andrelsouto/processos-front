@@ -7,24 +7,32 @@ import { LoadService } from '../shared/load/load.service';
 import { tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { JwtService } from './jwt.service';
+import { SpinnerService } from '../shared/spinner/spinner.service';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
     
-    constructor(private loadService: LoadService, private userService: UserService, private auth: JwtService, private router: Router){ }
+    constructor(
+        private loadService: LoadService,
+        private userService: UserService,
+        private auth: JwtService,
+        private router: Router,
+        private spinnerService: SpinnerService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        
+
         return next.handle(req).pipe(tap(event => {
-            
+
             if (event instanceof HttpResponse){
-                
+
                 if (!this.userService.isLogged() && event.headers.has('Authorization')){
                     this.auth.setToken(event.headers.get('Authorization'));
                 }
                 this.loadService.stop();
+                this.spinnerService.stop();
             } else {
                 this.loadService.start();
+                this.spinnerService.start();
             }
         }, error => {
 
