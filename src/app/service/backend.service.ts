@@ -27,21 +27,21 @@ export class BackendService {
 
   request(method: string, url: string, params?): Observable<any>{
 
-    if(method.toUpperCase() === 'POST'){
+    if (method.toUpperCase() === 'POST') {
 
       return this.http.post(`${host}${url}`, params);
-    }else if (method.toUpperCase() === 'GET'){
+    } else if (method.toUpperCase() === 'GET') {
 
       return this.http.get(`${host}${url}`, { params: params });
     }
   }
 
-  protectedRequest(method: string, url: string, params?): Observable<any>{
+  protectedRequest(method: string, url: string, params?): Observable<any> {
 
-    if(method.toUpperCase() === 'POST'){
-      
+    if (method.toUpperCase() === 'POST') {
+
       return this.http.post(`${host}${url}`, params, { headers: {'Authorization': this.auth.getToken()}, responseType: 'text'});
-    }else if (method.toUpperCase() === 'GET'){
+    } else if (method.toUpperCase() === 'GET') {
 
       return this.http.get(`${host}${url}`, { params: params, headers: {'Authorization': this.auth.getToken()}, responseType: 'text'});
     }

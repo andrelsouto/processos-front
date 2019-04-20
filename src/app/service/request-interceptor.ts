@@ -41,6 +41,7 @@ export class RequestInterceptor implements HttpInterceptor {
                 if ( error.status === 500 ) {
 
                     this.userService.logoffUser();
+                    this.spinnerService.stop();
                     this.router.navigate(['/login']);
                 }
             }
