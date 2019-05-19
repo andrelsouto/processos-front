@@ -17,7 +17,7 @@ export class RelatorioResolver implements Resolve<any> {
         return this.homeService.downloadPdf().subscribe(
             relatorio => {
                 let pdf = new Blob([relatorio], { type: 'application/pdf; attachement=contracheque.pdf' });
-                saveAs(pdf, 'contracheque.pdf');
+                saveAs(pdf, 'processos.pdf');
             }
         );
 
