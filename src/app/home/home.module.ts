@@ -15,6 +15,7 @@ import { TableComponent } from './processos/table/table.component';
 import { SentaciadosComponent } from './processos/sentaciados/sentaciados.component';
 import { NaoSentenciadosComponent } from './processos/nao-sentenciados/nao-sentenciados.component';
 import { ProdutividadeComponent } from './produtividade/produtividade.component';
+import { SentenciarComponent } from './sentenciar/sentenciar.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { ProdutividadeComponent } from './produtividade/produtividade.component'
     TableComponent,
     SentaciadosComponent,
     NaoSentenciadosComponent,
-    ProdutividadeComponent
+    ProdutividadeComponent,
+    SentenciarComponent
   ]
 })
 export class HomeModule { }

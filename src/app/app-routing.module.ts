@@ -9,10 +9,14 @@ import { SentaciadosComponent } from './home/processos/sentaciados/sentaciados.c
 import { ProdutividadeComponent } from './home/produtividade/produtividade.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './service/auth.guard';
+import { RelatorioResolver } from './service/relatorio-resolver';
+import { SentenciarComponent } from './home/sentenciar/sentenciar.component';
+import { SentenciarResolver } from './service/sentenciar-resolver';
 
 const routes: Routes = [
-  
+
   { path: 'login', component: LoginComponent },
+  { path: 'sentenciar/:numero', component: SentenciarComponent, resolve: { numero: SentenciarResolver } },
 
   { path: '', component: HomeComponent, canActivate: [AuthGuard] , children: [
     { path: 'upload', component: UploadComponent },
@@ -20,6 +24,7 @@ const routes: Routes = [
     { path: 'processos/sentenciados', component: SentaciadosComponent },
     { path: 'processos/nao/sentenciados', component: NaoSentenciadosComponent },
     { path: 'produtividade', component: ProdutividadeComponent },
+    { path: 'get-relatorio', resolve: { rel: RelatorioResolver }, component: HomeComponent },
     { path: '**', redirectTo: '/' }
   ]
   }

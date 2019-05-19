@@ -57,12 +57,12 @@ export class HomeComponent implements OnInit {
 
   download() {
 
-    this.homeService.downloadPdf("e7204bb0-38ce-485a-8f48-63ed89998049").subscribe(re => {
+    // this.homeService.downloadPdf("e7204bb0-38ce-485a-8f48-63ed89998049").subscribe(re => {
 
-      this.processo = new Blob([re], { type: 'application/jpg' });
-      this.url = this.sanitizar.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.processo));
-      // saveAs(this.processo, 'processo.pdf');
-    });
+    //   this.processo = new Blob([re], { type: 'application/jpg' });
+    //   this.url = this.sanitizar.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.processo));
+    //   // saveAs(this.processo, 'processo.pdf');
+    // });
   }
 
   @HostListener('window:resize')
