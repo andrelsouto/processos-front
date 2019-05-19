@@ -12,7 +12,7 @@ export class SentenciarResolver implements Resolve<any> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        
-        return this.pService.sentenciarProcesso(route.paramMap.get('numero'));
+
+        return this.pService.sentenciarProcessoQrCode(route.paramMap.get('numero'));
     }
 }

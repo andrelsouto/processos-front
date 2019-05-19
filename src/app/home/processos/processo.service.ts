@@ -30,6 +30,11 @@ export class ProcessoService {
     return this.backendService.protectedRequest('post', 'processo/' + numero);
   }
 
+  sentenciarProcessoQrCode(numero: string){
+
+    return this.backendService.request('get', 'processo/sentenciar/' + numero);
+  }
+
   deleteProcesso(id: string){
 
     return this.backendService.protectedRequest('post', 'processo/delete/' + id);
