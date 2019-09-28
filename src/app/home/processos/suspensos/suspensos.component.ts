@@ -5,12 +5,11 @@ import { MessageResponseComponent } from 'src/app/shared/message-response/messag
 import { ProcessoService } from '../processo.service';
 
 @Component({
-  selector: 'app-nao-sentenciados',
-  templateUrl: './nao-sentenciados.component.html',
-  styleUrls: ['./nao-sentenciados.component.css'],
-  providers: [ProcessoService]
+  selector: 'app-suspensos',
+  templateUrl: './suspensos.component.html',
+  styleUrls: ['./suspensos.component.css']
 })
-export class NaoSentenciadosComponent implements OnInit {
+export class SuspensosComponent implements OnInit {
 
   processos: Processo[];
   filter: string = '';
@@ -21,14 +20,13 @@ export class NaoSentenciadosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.processoService.getNaoSentenciados().subscribe(p => {
+    this.processoService.getSuspensos().subscribe(p => {
       this.processos = p;
     });
   }
 
-  sentenciar(processo: Processo) {
-
-    this.processoService.sentenciarProcesso(processo.numero).subscribe((res: Processo) => {
+  suspender(processo: Processo) {
+    this.processoService.suspenderProcesso(processo.numero).subscribe((res: Processo) => {
       const index: number = this.tableProcessos.processos.findIndex(p => p.numero === res.numero);
       this.tableProcessos.processos.splice(index, 1);
       this.message.message = 'Processo sentenciado com sucesso.';
@@ -39,18 +37,4 @@ export class NaoSentenciadosComponent implements OnInit {
       this.message.css = 'danger';
     });
   }
-
-  suspender(processo: Processo) {
-    this.processoService.suspenderProcesso(processo.numero).subscribe((res: Processo) => {
-      const index: number = this.tableProcessos.processos.findIndex(p => p.numero === res.numero);
-      this.tableProcessos.processos.splice(index, 1);
-      this.message.message = 'Processo suspenso.';
-      this.message.css = 'warning';
-    },
-    () => {
-      this.message.message = 'Erro ao sentenciar processo.';
-      this.message.css = 'danger';
-    });
-  }
-
 }

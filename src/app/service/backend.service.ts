@@ -15,7 +15,7 @@ export class BackendService {
 
   constructor(private http: HttpClient, private auth: JwtService) { }
 
-  getConfig(){
+  getConfig() {
 
     return this.http.get<{ backendHost: String, textfile: string }>(configUrl);
   }
@@ -25,7 +25,7 @@ export class BackendService {
     return host;
   }
 
-  request(method: string, url: string, params?): Observable<any>{
+  request(method: string, url: string, params?): Observable<any> {
 
     if (method.toUpperCase() === 'POST') {
 
@@ -40,10 +40,10 @@ export class BackendService {
 
     if (method.toUpperCase() === 'POST') {
 
-      return this.http.post(`${host}${url}`, params, { headers: {'Authorization': this.auth.getToken()}, responseType: 'text'});
+      return this.http.post<any>(`${host}${url}`, params, { headers: {'Authorization': this.auth.getToken()}});
     } else if (method.toUpperCase() === 'GET') {
 
-      return this.http.get(`${host}${url}`, { params: params, headers: {'Authorization': this.auth.getToken()}, responseType: 'text'});
+      return this.http.get<any>(`${host}${url}`, { params: params, headers: {'Authorization': this.auth.getToken()}});
     }
   }
 

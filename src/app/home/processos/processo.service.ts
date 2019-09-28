@@ -9,33 +9,42 @@ export class ProcessoService {
   
   constructor(private backendService: BackendService) { }
 
-  getProcessos(){
+  getProcessos() {
 
     return this.backendService.protectedRequest('get', 'processo/getAll');
   }
 
-  getSentenciados(){
+  getSentenciados() {
 
     return this.backendService.protectedRequest('get', 'processo/sentenciados');
   }
 
-  getNaoSentenciados(){
+  getSuspensos() {
+
+    return this.backendService.protectedRequest('get', 'processo/suspensos');
+  }
+
+  getNaoSentenciados() {
 
     return this.backendService.protectedRequest('get', 'processo/naoSentenciados');
   }
-    
 
-  sentenciarProcesso(numero: string){
+  sentenciarProcesso(numero: string) {
 
     return this.backendService.protectedRequest('post', 'processo/' + numero);
   }
 
-  sentenciarProcessoQrCode(numero: string){
+  suspenderProcesso(numero: string) {
+
+    return this.backendService.protectedRequest('post', 'processo/suspender/' + numero);
+  }
+
+  sentenciarProcessoQrCode(numero: string) {
 
     return this.backendService.request('get', 'processo/sentenciar/' + numero);
   }
 
-  deleteProcesso(id: string){
+  deleteProcesso(id: string) {
 
     return this.backendService.protectedRequest('post', 'processo/delete/' + id);
   }

@@ -1,6 +1,6 @@
-<h1 class="display-4 text-center">Sentenciados</h1>
+<h1 class="display-4 text-center">Suspensos</h1>
 <div class="input-group mb-3">
   <input type="text" (keyup)="filter = $event.target.value" class="form-control" placeholder="Digite o numero do processo para buscar...">
 </div>
 <app-message-response></app-message-response>
-<app-table (sentenciado)="sentenciar($event)" (suspensao)="suspender($event)" [processos]="processos | processo: filter"></app-table>
+<app-table [isSuspensao]=true (suspensao)="suspender($event)" [processos]="processos | processo: filter"></app-table>

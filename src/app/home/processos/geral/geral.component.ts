@@ -23,22 +23,34 @@ export class GeralComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getProcessos().subscribe(p => {
-      this.processos = JSON.parse(p);
+      this.processos = p;
     });
   }
 
   sentenciar(processo: Processo){
 
-    this.processoService.sentenciarProcesso(processo.numero).subscribe((res)=>{
-      res = JSON.parse(res) as Processo;
+    this.processoService.sentenciarProcesso(processo.numero).subscribe((res: Processo) => {
       let index: number = this.tableProcessos.processos.findIndex(p => p.numero == res.numero);
       this.tableProcessos.processos[index] = res;
-      processo.setenciado ? this.message.message = 'Processo não mais sentenciado.'
+      processo.situacao.codigo === 1 ? this.message.message = 'Processo não mais sentenciado.'
         : this.message.message = 'Processo sentenciado com sucesso!';
-      processo.setenciado ? this.message.css = 'warning' : this.message.css = 'success';
+      processo.situacao.codigo === 1 ? this.message.css = 'warning' : this.message.css = 'success';
     },
     () => {
       this.message.message = 'Erro ao sentenciar processo.';
+      this.message.css = 'danger';
+    });
+  }
+
+  suspender(processo: Processo) {
+    this.processoService.suspenderProcesso(processo.numero).subscribe((res: Processo) => {
+      let index: number = this.tableProcessos.processos.findIndex(p => p.numero == res.numero);
+      this.tableProcessos.processos[index] = res;
+      res.situacao.codigo === 3 ? this.message.message = 'Processo suspenso' : this.message.message = 'Processo não mais suspenso';
+      this.message.css = 'warning';
+    },
+    () => {
+      this.message.message = 'Erro ao suspender processo.';
       this.message.css = 'danger';
     });
   }

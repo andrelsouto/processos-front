@@ -10,20 +10,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of processos | paginate: { itemsPerPage: 15, currentPage: page }" [class.table-success]="p.setenciado">
+        <tr *ngFor="let p of processos | paginate: { itemsPerPage: 15, currentPage: page }" [class.table-success]="p.situacao.codigo === 1" [class.table-danger]="p.situacao.codigo === 3">
           <td>{{ p.numero }}</td>
           <td class="only-desk">{{ p.nome }}</td>
           <td>
-            <a (click)="sentenciar(p)" *ngIf="p.setenciado" class="text-success mdi mdi-checkbox-marked-circle-outline">
+            <a (click)="sentenciar(p)" *ngIf="p.situacao.codigo === 1" class="text-success mdi mdi-checkbox-marked-circle-outline">
                 <span class="text-dark"> Sentenciado</span>
             </a>
-            <a (click)="sentenciar(p)" *ngIf="!p.setenciado" class="text-warning mdi mdi-checkbox-blank-circle-outline">
+            <a (click)="sentenciar(p)" *ngIf="p.situacao.codigo === 2" class="text-warning mdi mdi-checkbox-blank-circle-outline">
               <span class="text-dark"> A Sentenciar</span>
+            </a>
+            <a (click)="suspender(p)" *ngIf="p.situacao.codigo === 3" class="text-danger mdi mdi-close-circle-outline">
+              <span class="text-dark"> Suspenso</span>
             </a>
           </td>
           <td>
-            <button [swal]="deleteSwal" (processo)="processoSelecionado = $event" [appProcesso]="p" 
-              (confirm)="confirmacao(p)" class="btn btn-link text-danger mdi mdi-delete-outline" data-toggle="tooltip" data-placement="top" title="Excluir"></button>
+            <a class="dropdown-toggle" (processo)="processoSelecionado = $event" [appProcesso]="p" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mdi mdi-settings"></span></a>
+              <div class="dropdown-menu">
+                <a *ngIf="!isSuspensao && p.situacao.codigo !== 3" class="dropdown-item" (click)="sentenciar(p)">Sentenciar</a>
+                <a class="dropdown-item" (click)="suspender(p)">Suspender</a>
+                <div class="dropdown-divider"></div>
+                <a [swal]="deleteSwal" (confirm)="confirmacao(p)" class="dropdown-item">Remover</a>
+              </div>
           </td>
         </tr>
       </tbody>

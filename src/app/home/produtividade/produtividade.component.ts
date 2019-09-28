@@ -53,7 +53,6 @@ export class ProdutividadeComponent implements OnInit {
   ngOnInit() {
 
     this.produtividadeService.getDataChart().subscribe(j => {
-      j = JSON.parse(j) as Array<any>;
       j.forEach((c) => {
         this.data.push([
           c.anoMeta, c.sents, c.nSents

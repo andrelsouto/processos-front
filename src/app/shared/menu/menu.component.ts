@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
       new Menu('Processos', '/processos/geral'),
       new Menu('Processos sentenciados', '/processos/sentenciados'),
       new Menu('Processos a sentenciar', '/processos/nao/sentenciados'),
+      new Menu('Processos suspensos', '/processos/suspensos'),
       new Menu('Produtividade', '/produtividade'),
       new Menu('Gerar Relatório', '/get-relatorio')
     ]

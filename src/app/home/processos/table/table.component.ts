@@ -15,7 +15,9 @@ import { ProcessoDirective } from 'src/app/shared/directives/processo.directive'
 export class TableComponent implements OnInit, OnChanges {
 
   @Input() processos: Processo[];
+  @Input() isSuspensao = false;
   @Output() sentenciado = new EventEmitter<Processo>();
+  @Output() suspensao = new EventEmitter<Processo>();
   @ViewChild(ConfirmAnswerComponent) answer: ConfirmAnswerComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
   @ContentChild(ProcessoDirective) proc!: ProcessoDirective;
@@ -24,9 +26,13 @@ export class TableComponent implements OnInit, OnChanges {
 
   constructor(private processoService: ProcessoService) { }
 
-  sentenciar(p){
+  sentenciar(p: Processo) {
 
     this.sentenciado.emit(p);
+  }
+
+  suspender(p: Processo) {
+    this.suspensao.emit(p);
   }
 
   ngOnInit() {
@@ -34,17 +40,14 @@ export class TableComponent implements OnInit, OnChanges {
 
   confirmacao(processo: Processo) {
 
-    this.processoService.deleteProcesso(processo.id).pipe(
-
-      finalize(() => this.answer.show = false)
-      ).subscribe(
-      () => {
+    this.processoService.deleteProcesso(processo.id).subscribe(
+      (res) => {
 
         this.processos = this.processos.filter(p => p.id !== processo.id);
         this.message.message = 'Processo excluído com sucesso!';
         this.message.css = 'success';
       },
-      () => {
+      (err) => {
 
         this.message.message = 'Erro ao excluir processo!';
         this.message.css = 'danger';

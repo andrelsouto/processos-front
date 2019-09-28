@@ -43,6 +43,9 @@ export class RequestInterceptor implements HttpInterceptor {
                     this.userService.logoffUser();
                     this.spinnerService.stop();
                     this.router.navigate(['/login']);
+                } else {
+                    this.loadService.stop();
+                    this.spinnerService.stop();
                 }
             }
         }));

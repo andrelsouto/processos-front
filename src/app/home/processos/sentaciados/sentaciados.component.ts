@@ -23,24 +23,37 @@ export class SentaciadosComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getSentenciados().subscribe(p => {
-      this.processos = JSON.parse(p);
+      console.log(p);
+      this.processos = p;
     });
   }
 
-  sentenciar(processo: Processo){
-    
-    this.processoService.sentenciarProcesso(processo.numero).subscribe((res)=>{
-      res = JSON.parse(res) as Processo;
+  sentenciar(processo: Processo) {
+
+    this.processoService.sentenciarProcesso(processo.numero).subscribe((res: Processo) => {
       let index: number = this.tableProcessos.processos.findIndex(p => p.numero == res.numero);
       this.processos.splice(index, 1);
       this.message.message = 'Processo não mais sentenciado.';
       this.message.css = 'warning';
     },
-    ()=>{
+    () => {
       this.message.message = 'Erro ao sentenciar processo.';
       this.message.css = 'danger';
     }
     );
+  }
+
+  suspender(processo: Processo) {
+    this.processoService.suspenderProcesso(processo.numero).subscribe((res: Processo) => {
+      const index: number = this.tableProcessos.processos.findIndex(p => p.numero === res.numero);
+      this.tableProcessos.processos.splice(index, 1);
+      this.message.message = 'Processo suspenso';
+      this.message.css = 'success';
+    },
+    () => {
+      this.message.message = 'Erro ao sentenciar processo.';
+      this.message.css = 'danger';
+    });
   }
 
 }

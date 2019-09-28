@@ -12,6 +12,7 @@ import { AuthGuard } from './service/auth.guard';
 import { RelatorioResolver } from './service/relatorio-resolver';
 import { SentenciarComponent } from './home/sentenciar/sentenciar.component';
 import { SentenciarResolver } from './service/sentenciar-resolver';
+import { SuspensosComponent } from './home/processos/suspensos/suspensos.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'upload', component: UploadComponent },
     { path: 'processos/geral', component: GeralComponent },
     { path: 'processos/sentenciados', component: SentaciadosComponent },
+    { path: 'processos/suspensos', component: SuspensosComponent },
     { path: 'processos/nao/sentenciados', component: NaoSentenciadosComponent },
     { path: 'produtividade', component: ProdutividadeComponent },
     { path: 'get-relatorio', resolve: { rel: RelatorioResolver }, component: HomeComponent },
