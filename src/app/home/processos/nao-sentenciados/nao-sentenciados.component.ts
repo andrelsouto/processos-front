@@ -15,6 +15,7 @@ export class NaoSentenciadosComponent implements OnInit {
   processos: Processo[];
   filter: string = '';
   copied = false;
+  numeros;
   @ViewChild(TableComponent) tableProcessos: TableComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
 
@@ -64,9 +65,17 @@ export class NaoSentenciadosComponent implements OnInit {
           }
           return acumulado;
         }, '');
-        const p: any = window.navigator;
-        p.clipboard.writeText(cp);
-        this.copied = true;
+        const selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = cp;
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        this.copied = document.execCommand('copy');
+        document.body.removeChild(selBox);
     }
   }
 

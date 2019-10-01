@@ -57,8 +57,7 @@ export class GeralComponent implements OnInit {
   }
 
   cpNumeros() {
-    const onCp: any = window.navigator;
-    if (this.processos && this.processos.length > 0 && onCp) {
+    if (this.processos && this.processos.length > 0) {
       const cp = this.processos.map(p => p.numero)
         .reduce((acumulado, atual, idx, arr) => {
           (idx + 1) % 2 === 0 ? acumulado += atual + ',\n' : acumulado += atual + ',\t';
@@ -67,8 +66,17 @@ export class GeralComponent implements OnInit {
           }
           return acumulado;
         }, '');
-        onCp.clipboard.writeText(cp);
-        this.copied = true;
+        const selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = cp;
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        this.copied = document.execCommand('copy');
+        document.body.removeChild(selBox);
     }
   }
 
