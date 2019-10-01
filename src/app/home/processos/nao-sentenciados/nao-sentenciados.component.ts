@@ -14,6 +14,7 @@ export class NaoSentenciadosComponent implements OnInit {
 
   processos: Processo[];
   filter: string = '';
+  copied = false;
   @ViewChild(TableComponent) tableProcessos: TableComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
 
@@ -51,6 +52,22 @@ export class NaoSentenciadosComponent implements OnInit {
       this.message.message = 'Erro ao sentenciar processo.';
       this.message.css = 'danger';
     });
+  }
+
+  cpNumeros() {
+    if (this.processos && this.processos.length > 0) {
+      const cp = this.processos.map(p => p.numero)
+        .reduce((acumulado, atual, idx, arr) => {
+          (idx + 1) % 2 === 0 ? acumulado += atual + ',\n' : acumulado += atual + ',\t';
+          if (arr.length === idx + 1) {
+            acumulado = acumulado.substr(0, acumulado.length - 2);
+          }
+          return acumulado;
+        }, '');
+        const p: any = window.navigator;
+        p.clipboard.writeText(cp);
+        this.copied = true;
+    }
   }
 
 }
