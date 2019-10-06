@@ -13,7 +13,7 @@
       <div [@openClose]="isOpen" (@openClose.start)="animationStart()" (@openClose.done)="animationDone()" [class.invisible]="invisible && !desk" class="position-fixed shadow p-3 col menu">
           <app-menu (click)="showContent()"></app-menu>
     </div>
-    <div [class.invisible]="!invisible && !desk" class="col-sm-12 col-md-10 col-lg-10 col-xl-10 app">
+    <div [class.invisible.d-flex.justify-content-center]="!invisible && !desk" class="col-sm-12 col-md-10 col-lg-10 col-xl-10 app">
         <router-outlet></router-outlet>
     </div>
   </div>

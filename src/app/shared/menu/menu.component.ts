@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
 
     this.menus = [
       new Menu('Upload Arquivo', '/upload'),
+      new Menu('Cadastro', '/processos/cadastro'),
       new Menu('Processos', '/processos/geral'),
       new Menu('Processos sentenciados', '/processos/sentenciados'),
       new Menu('Processos a sentenciar', '/processos/nao/sentenciados'),

@@ -1,0 +1,19 @@
+<app-message-response></app-message-response>
+<form [formGroup]="form" (ngSubmit)="cadastrarProcesso(form.value)">
+    <div class="form-group">
+        <label for="numero">Número</label>
+        <input id="numero" class="form-control" formControlName="numero" mask="00000000000000000000" type="text">
+        <div *ngIf="numero.errors?.processoExists" class="invalid-feedback">
+            Já existe um processo cadastrado com esse número.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" formControlName="nome" id="nome" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid || form.pending">
+        Cadastrar
+    </button>
+</form>

@@ -13,6 +13,7 @@ import { RelatorioResolver } from './service/relatorio-resolver';
 import { SentenciarComponent } from './home/sentenciar/sentenciar.component';
 import { SentenciarResolver } from './service/sentenciar-resolver';
 import { SuspensosComponent } from './home/processos/suspensos/suspensos.component';
+import { CadastroComponent } from './home/processos/cadastro/cadastro.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,7 @@ const routes: Routes = [
 
   { path: '', component: HomeComponent, canActivate: [AuthGuard] , children: [
     { path: 'upload', component: UploadComponent },
+    { path: 'processos/cadastro', component: CadastroComponent },
     { path: 'processos/geral', component: GeralComponent },
     { path: 'processos/sentenciados', component: SentaciadosComponent },
     { path: 'processos/suspensos', component: SuspensosComponent },

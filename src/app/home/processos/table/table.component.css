@@ -7,4 +7,20 @@ a:hover {
 
         display: none;
     }
+    .table-responsive {
+        position: relative;
+        left: 0;
+        width: 98vw;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .table-responsive {
+    
+        width: calc(100vw - 360px);
+    }
+}
+
+.custom-control-label, .custom-control, .custom-control-input, .custom-checkbox {
+    color: black !important;
 }

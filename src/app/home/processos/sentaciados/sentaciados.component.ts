@@ -16,6 +16,7 @@ export class SentaciadosComponent implements OnInit {
   processos: Processo[];
   filter: string = '';
   copied = false;
+  numeros: Array<string>;
   @ViewChild(TableComponent) tableProcessos: TableComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
 
@@ -58,8 +59,8 @@ export class SentaciadosComponent implements OnInit {
   }
 
   cpNumeros() {
-    if (this.processos && this.processos.length > 0) {
-      const cp = this.processos.map(p => p.numero)
+    if (this.numeros && this.numeros.length > 0) {
+      const cp = this.numeros
         .reduce((acumulado, atual, idx, arr) => {
           (idx + 1) % 2 === 0 ? acumulado += atual + ',\n' : acumulado += atual + ',\t';
           if (arr.length === idx + 1) {
@@ -79,6 +80,10 @@ export class SentaciadosComponent implements OnInit {
         this.copied = document.execCommand('copy');
         document.body.removeChild(selBox);
     }
+  }
+
+  numerosParaCopia(numeros: Array<string>) {
+    this.numeros = numeros;
   }
 
 }

@@ -18,11 +18,15 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() isSuspensao = false;
   @Output() sentenciado = new EventEmitter<Processo>();
   @Output() suspensao = new EventEmitter<Processo>();
+  @Output() selecionados = new EventEmitter<string[]>();
   @ViewChild(ConfirmAnswerComponent) answer: ConfirmAnswerComponent;
   @ViewChild(MessageResponseComponent) message: MessageResponseComponent;
   @ContentChild(ProcessoDirective) proc!: ProcessoDirective;
   processoSelecionado: Processo;
+  processosCp = new Array<any>();
+  idxSelecionados = new Array<number>();
   page: number = 1;
+  todos: any;
 
   constructor(private processoService: ProcessoService) { }
 
@@ -33,6 +37,31 @@ export class TableComponent implements OnInit, OnChanges {
 
   suspender(p: Processo) {
     this.suspensao.emit(p);
+  }
+
+  addRemoveNumeroParaCopia(value, idx: number) {
+    this.processosCp.length === 0 && this.instancia();
+    value ? this.idxSelecionados.push(idx) : this.idxSelecionados.splice(this.idxSelecionados.indexOf(idx), 1);
+    const processoParaCopia = this.processos.map((p, indice, it) => {
+      if (indice < this.idxSelecionados.length) {
+
+        return it[this.idxSelecionados[indice]].numero;
+      }
+    }).filter(v => v);
+    this.selecionados.emit(processoParaCopia);
+    this.todos = this.processosCp.length === this.idxSelecionados.length;
+  }
+
+  selecionarTodos(value) {
+    this.processosCp.length === 0 && this.instancia();
+    this.processos.forEach((p, i) => this.processosCp[i] = value);
+    const processoParaCopia = value ? this.processos.map(p => p.numero) : [];
+    this.processosCp.forEach((p, i) => this.idxSelecionados.push(i));
+    this.selecionados.emit(processoParaCopia);
+  }
+
+  instancia() {
+    this.processosCp = new Array<any>(this.processos.length);
   }
 
   ngOnInit() {
@@ -52,7 +81,7 @@ export class TableComponent implements OnInit, OnChanges {
         this.message.message = 'Erro ao excluir processo!';
         this.message.css = 'danger';
       }
-    )
+    );
   }
 
   ngOnChanges(): void {

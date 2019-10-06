@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { JwtService } from './jwt.service';
+import { environment } from 'src/environments/environment';
 
 const configUrl = 'assets/config.json';
-const host = 'https://glacial-brushlands-71010.herokuapp.com/';
-// const host = 'http://localhost:8080/';
+const host = environment.backandHost;
 
 @Injectable({
   providedIn: 'root'

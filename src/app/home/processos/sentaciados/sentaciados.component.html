@@ -1,7 +1,7 @@
 <h1 class="display-4 text-center">Sentenciados</h1>
 <div class="form-group">
   <input type="text" aria-describedby="copyButton" (keyup)="filter = $event.target.value" class="form-control" placeholder="Digite o numero do processo para buscar...">
-  <small *ngIf="!copied" class="form-text btn-link" (click)="cpNumeros(textToCpoy)" id="copyButton">
+  <small *ngIf="!copied" class="form-text btn-link" (click)="cpNumeros()" id="copyButton">
     Copiar número dos processos
   </small>
   <small *ngIf="copied" id="copyButton" class="text-success">
@@ -10,4 +10,4 @@
   </small>
 </div>
 <app-message-response></app-message-response>
-<app-table (sentenciado)="sentenciar($event)" (suspensao)="suspender($event)" [processos]="processos | processo: filter"></app-table>
+<app-table (sentenciado)="sentenciar($event)" (selecionados)="numerosParaCopia($event)" (suspensao)="suspender($event)" [processos]="processos | processo: filter"></app-table>
