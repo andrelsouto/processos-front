@@ -25,7 +25,6 @@ export class SentaciadosComponent implements OnInit {
   ngOnInit() {
 
     this.processoService.getSentenciados().subscribe(p => {
-      console.log(p);
       this.processos = p;
     });
   }

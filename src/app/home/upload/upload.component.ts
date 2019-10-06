@@ -38,14 +38,12 @@ export class UploadComponent implements OnInit {
     event.preventDefault();
     this.uploadService.uploadCSV(this.file).subscribe(
       h => {
-        console.log(h);
         this.message.message = h;
         this.class = 'success';
       },
-      error => {
+      () => {
         this.message.message = 'Erro ao fazer upload dos arquivos';
         this.class = 'danger';
-        console.log(error.status);
       }
     );
   }

@@ -27,15 +27,16 @@ export class HomeComponent implements OnInit {
   isOpen: boolean = true;
   invisible: boolean = false;
   desk: boolean = true;
-  
-  constructor(private homeService: HomeService, private config: BackendService, private fb: FormBuilder, private sanitizar: DomSanitizer) { }
 
-  animationStart(){
+  constructor(private homeService: HomeService,
+    private config: BackendService, private fb: FormBuilder, private sanitizar: DomSanitizer) { }
+
+  animationStart() {
 
     if(window.innerWidth <= 1370)  this.invisible = false;    
   }
-  animationDone(){
-    
+  animationDone() {
+
     if(window.innerWidth <= 1370)  this.invisible = !this.isOpen;
   }
 
@@ -49,7 +50,7 @@ export class HomeComponent implements OnInit {
     // this.download();
   }
 
-  upload(event, data){
+  upload(event, data) {
 
     event.preventDefault();
     this.homeService.uploadPdf(this.file).subscribe(r => console.log(r), e => console.log(e));
