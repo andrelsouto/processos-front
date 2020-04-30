@@ -35,7 +35,7 @@
     "express": "^4.16.4",
     "express-sslify": "^1.2.0",
     "file-saver": "^2.0.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jwt-decode": "^2.2.0",
     "material-design-icons": "^3.0.1",
     "ngx-mask": "^8.0.8",
